@@ -3,11 +3,15 @@
 
 <%
 
-int[] resultado = new int[10]
+int[] resultado = new int[20];
 resultado[0] =1;
-resultado[0] =1;
+resultado[1] =1;
 
-request.setAttribute("resultado", resultado)
+for(int pos = 2; pos < resultado.length;pos++){
+    resultado[pos]= resultado[pos-1] + resultado[pos-2];
+}
+
+request.setAttribute("resultado", resultado);
 %>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -18,8 +22,8 @@ request.setAttribute("resultado", resultado)
 </head>
 <body>
    <h1>Sequencia de Fibonacci</h1> 
-   <c:forEach>
-    
+   <c:forEach var="item" items="${resultado}">
+        ${item}<br/>
    </c:forEach>
 </body>
 </html>
